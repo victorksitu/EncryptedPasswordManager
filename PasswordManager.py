@@ -58,7 +58,7 @@ def key_from_password(password: str, salt: bytes = None) -> dict:
 def encrypt_data(data: dict, key: bytes) -> tuple:
     json_string = json.dumps(data)
     password_bytes = json_string.encode('utf-8')
-    iv = os.urandom(16)
+    iv = os.urandom(12)
     cipher = AESGCM(key)
 
     encrypted_data = cipher.encrypt(iv, password_bytes, None)
